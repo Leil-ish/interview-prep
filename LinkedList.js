@@ -143,4 +143,40 @@ function Node(value) {
       }
       return nodes.join(' -> ');
     }
+
+    // insert value at the position index of the list 
+    insertAt(value, index) { 
+        if (index > 0 && index > this.size) 
+            return false; 
+        else { 
+            // creates a new node 
+            let node = new Node(value); 
+            let current, previous; 
+    
+            current = this.head; 
+    
+            // add the element to the 
+            // first index 
+            if (index == 0) { 
+                node.next = head; 
+                this.head = node; 
+            } else { 
+                current = this.head; 
+                let it = 0; 
+    
+                // iterate over the list to find 
+                // the position to insert 
+                while (it < index) { 
+                    it++; 
+                    previous = current; 
+                    current = current.next; 
+                } 
+    
+                // adding an element 
+                node.next = current; 
+                previous.next = node; 
+            } 
+            this.size++; 
+        } 
+    } 
   }

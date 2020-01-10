@@ -146,3 +146,23 @@ I hope this explanation was a bit more down to earth than buckets and functions 
 // list is repeated, then there is no mode for the list.
 // - Input: `1, 2, 3, 6, 10, 3, 5, 6, 3, 3`
 // - Output: `Mode = 3, Frequency of mode = 4`
+
+function mode(array) {
+    var counter = {};
+    var mode = [];
+    var max = 0;
+    for (var i in array) {
+        if (!(array[i] in counter))
+            counter[array[i]] = 0;
+        counter[array[i]]++;
+ 
+        if (counter[array[i]] == max) 
+            mode.push(array[i]);
+        else if (counter[array[i]] > max) {
+            max = counter[array[i]];
+            mode = [array[i]];
+        }
+    }
+    return `Mode = ${mode}, Freqency of mode = ${max}`;
+}
+console.log(mode([1, 2, 3, 6, 10, 3, 5, 6, 3, 3]));
